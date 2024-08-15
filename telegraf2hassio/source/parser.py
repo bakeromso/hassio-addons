@@ -88,11 +88,12 @@ class telegraf_parser():
     def add_calc(self, jdata_o):
         jdata = deepcopy(jdata_o)
         for measurement_name in self.__get_measurements_list(jdata_o):
-
             uid = self.__get_unique_id(jdata, measurement_name)
 
             # Add calc sensor and calculated value
             if uid in self.cm_dict.keys():
+                logging.info(f"{uid} is in {self.cm_dict.keys()}")
+                
                 self.cm_dict[uid].set_name(measurement_name)
 
                 value = jdata["fields"][self.cm_dict[uid].name]
@@ -100,7 +101,7 @@ class telegraf_parser():
 
                 jdata["fields"][self.cm_dict[uid].name_calc] = self.cm_dict[uid].get_rate(value, t)
             else:
-                logging.info(f"{uid} not in {self.cm_dict.keys()}")
+                logging.info(f"{uid} is not in {self.cm_dict.keys()}")
                 
         return jdata
 
