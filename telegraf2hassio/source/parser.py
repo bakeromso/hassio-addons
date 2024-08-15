@@ -23,7 +23,9 @@ class calc_measurement():
     def set_name(self, name):
         self.name = name
         self.name_calc = f"{self.name}_dt"
-
+        logging.info(f"Added rated sensor: {self.name_calc}")
+        
+        
     def get_rate(self, value, time):
         delta = value - self.__prev_value
         rate = float(delta) / (time - self.__prev_t)
@@ -97,7 +99,7 @@ class telegraf_parser():
                 t = jdata["timestamp"]
 
                 jdata["fields"][self.cm_dict[uid].name_calc] = self.cm_dict[uid].get_rate(value, t)
-
+                
         return jdata
 
 
