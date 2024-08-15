@@ -207,7 +207,7 @@ class measurement():
         self.name = name
         self.parent_sensor = parent_sensor
         self.topic = f"{HA_PREFIX}/{self.parent_sensor.parent_host.name}/{self.parent_sensor.name}_{self.name}"
-        self.uid = f"{self.parent_sensor.parent_host.name}_{self.parent_sensor.name}_{self.name}__3"
+        self.uid = f"{self.parent_sensor.parent_host.name}_{self.parent_sensor.name}_{self.name}"
 
         config_payload = {
             # "~": self.topic,
@@ -215,11 +215,11 @@ class measurement():
             "state_topic": f"{STATE_PREFIX}/{self.parent_sensor.parent_host.name}/{self.parent_sensor.name}/data",
             "unit_of_measurement": "",
             "device": self.parent_sensor.parent_host.info,
-            "unique_id": self.uid,
+            "unique_id": f"{self.uid} + _xyab1",
             "platform": "mqtt",
             # Make the template such that we can use the telegraph topic straight
             "value_template": f"{{{{ value_json.{self.name} | round(2) }}}}",
         }
 
         # If it is a new measumente, announce it to hassio
-        self.parent_sensor.parent_host.parent_listener.transmit_callback(f"{self.topic}/config", json.dumps(config_payload), retain=True)
+        self.parent_sensor .parent_host.parent_listener.transmit_callback(f"{self.topic}/config", json.dumps(config_payload), retain=True)
