@@ -99,6 +99,8 @@ class telegraf_parser():
                 t = jdata["timestamp"]
 
                 jdata["fields"][self.cm_dict[uid].name_calc] = self.cm_dict[uid].get_rate(value, t)
+            else:
+                logging.info(f"{uid} not in {self.cm_dict.keys()}")
                 
         return jdata
 
