@@ -165,7 +165,7 @@ class host():
         self.info = {}
         self.info["identifiers"] = "bridge"
         self.info["model"] = "your_bridge"
-        self.info["name"] = self.name + "abc1"
+        self.info["name"] = self.name
         self.info["sw_version"] = VERSION
         self.info["manufacturer"] = "telegraf2ha"
 
