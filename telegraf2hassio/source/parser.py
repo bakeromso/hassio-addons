@@ -207,7 +207,7 @@ class measurement():
             "name": f"{self.parent_sensor.parent_host.name}_{self.parent_sensor.name[0:-3]}_{self.name}",
             "state_topic": f"{STATE_PREFIX}/{self.parent_sensor.parent_host.name}/{self.parent_sensor.name}/data",
             "unit_of_measurement": "",
-            "device": self.parent_sensor.parent_host.info,
+            "device": self.parent_sensor.parent_host.info + "__2",
             "unique_id": self.uid,
             "platform": "mqtt",
             # Make the template such that we can use the telegraph topic straight
