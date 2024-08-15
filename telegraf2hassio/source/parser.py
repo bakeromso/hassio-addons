@@ -165,7 +165,7 @@ class host():
         self.info = {}
         self.info["identifiers"] = "bridge"
         self.info["model"] = "your_bridge"
-        self.info["name"] = self.name
+        self.info["name"] = self.name + "abc1"
         self.info["sw_version"] = VERSION
         self.info["manufacturer"] = "telegraf2ha"
 
@@ -200,15 +200,15 @@ class measurement():
         self.name = name
         self.parent_sensor = parent_sensor
         self.topic = f"{HA_PREFIX}/{self.parent_sensor.parent_host.name}/{self.parent_sensor.name}_{self.name}"
-        self.uid = f"{self.parent_sensor.parent_host.name}_{self.parent_sensor.name}_{self.name}"
+        self.uid = f"{self.parent_sensor.parent_host.name}_{self.parent_sensor.name}_{self.name}__3"
 
         config_payload = {
             # "~": self.topic,
             "name": f"{self.parent_sensor.parent_host.name}_{self.parent_sensor.name[0:-3]}_{self.name}",
             "state_topic": f"{STATE_PREFIX}/{self.parent_sensor.parent_host.name}/{self.parent_sensor.name}/data",
             "unit_of_measurement": "",
-            "device": self.parent_sensor.parent_host.info + "__2",
-            "unique_id": self.uid + "__2",
+            "device": self.parent_sensor.parent_host.info,
+            "unique_id": self.uid,
             "platform": "mqtt",
             # Make the template such that we can use the telegraph topic straight
             "value_template": f"{{{{ value_json.{self.name} | round(2) }}}}",
