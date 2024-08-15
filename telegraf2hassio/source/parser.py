@@ -101,7 +101,8 @@ class telegraf_parser():
 
                 jdata["fields"][self.cm_dict[uid].name_calc] = self.cm_dict[uid].get_rate(value, t)
             else:
-                logging.info(f"{uid} is not in {self.cm_dict.keys()}")
+                # logging.info(f"{uid} is not in {self.cm_dict.keys()}")
+                pass
                 
         return jdata
 
@@ -170,7 +171,7 @@ class host():
 
         self.info = {}
         self.info["identifiers"] = "bridge"
-        self.info["model"] = "your_bridge"
+        self.info["model"] = "your_bridge_xyz"
         self.info["name"] = self.name
         self.info["sw_version"] = VERSION
         self.info["manufacturer"] = "telegraf2ha"
