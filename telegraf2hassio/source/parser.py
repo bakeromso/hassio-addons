@@ -63,8 +63,9 @@ class telegraf_parser():
             sensor_name += ('_' + jdata['tags'].get('device', "")).rstrip("_")
             sensor_name += ('_' + jdata['tags'].get('interface', "")).rstrip("_")
             sensor_name += ('_' + jdata['tags'].get('feature', "")).rstrip("_")
-            sensor_name += ('_' + jdata['tags'].get('serial_no', "")).rstrip("_")
-            
+            sensor_name += ('_' + jdata['tags'].get('serial_no', "")).rstrip("_") # used by smartctl
+            sensor_name += ('_' + jdata['tags'].get('ID_SERIAL', "")).rstrip("_") # used by diskio
+
 
         # Append this unique suffix to differ same-sensor-named topics
         # that contain different tags, that confuse hassio
