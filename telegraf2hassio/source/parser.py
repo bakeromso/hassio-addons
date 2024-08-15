@@ -63,6 +63,8 @@ class telegraf_parser():
             sensor_name += ('_' + jdata['tags'].get('device', "")).rstrip("_")
             sensor_name += ('_' + jdata['tags'].get('interface', "")).rstrip("_")
             sensor_name += ('_' + jdata['tags'].get('feature', "")).rstrip("_")
+            sensor_name += ('_' + jdata['tags'].get('serial_no', "")).rstrip("_")
+            
 
         # Append this unique suffix to differ same-sensor-named topics
         # that contain different tags, that confuse hassio
