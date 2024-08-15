@@ -1,6 +1,6 @@
 ---
 name: Telegraf2Hassio - Bakeromso fork
-version: 0.1.32
+version: 0.1.33
 slug: telegraf2hassio
 description: Turn telegraf metrics into hassio self-discovered sensors
 arch:
